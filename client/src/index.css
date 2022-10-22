@@ -1,0 +1,14 @@
+
+body {
+    background-color: #ffffff;  
+}
+
+* {
+    /* font-family: 'Noto Sans JP' !important; */
+    font-family: 'Heebo', sans-serif !important;
+}
+
+button {
+    border: '2px solid balck';
+    border-radius: 15;
+}

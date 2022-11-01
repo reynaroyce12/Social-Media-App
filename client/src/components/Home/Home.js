@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input';
 
-import { getPostsBySearch } from '../../actions/posts';
+import { getPostsByCreator, getPostsBySearch } from '../../actions/posts';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
 import Pagination from '../Pagination/Pagination';
@@ -24,16 +24,22 @@ const Home = () => {
 
   const [search, setSearch] = useState('');
   const [tags, setTags] = useState([]);
+  const [userAccount, setUserAccount] = useState('')
   const history = useHistory();
 
   const searchPost = () => {
-    if (search.trim() || tags) {
-      dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
+    if ((search.trim() || tags) && !userAccount) {
+      // console.log(userAccount)
+      dispatch(getPostsBySearch({ search, tags: tags.join(','),  }));
       history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
+    } else if (userAccount) {
+      dispatch(getPostsByCreator(userAccount))
+      history.push(`/creators/${userAccount}`)
     } else {
       history.push('/');
     }
   };
+
 
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
@@ -55,6 +61,7 @@ const Home = () => {
           <Grid item xs={12} sm={6} md={3}>
             <AppBar style={{ borderRadius: 15 }} className={classes.appBarSearch} position="static" color="inherit">
               <TextField autoComplete='off' onKeyDown={handleKeyPress} name="search" variant="outlined" label="Search Posts" fullWidth value={search} onChange={(e) => setSearch(e.target.value)} />
+              <TextField autoComplete='off' onKeyDown={handleKeyPress} name="creator" variant="outlined" label="Search Users" fullWidth value={userAccount} onChange={(e) => setUserAccount(e.target.value)} />
               <ChipInput
                 style={{ margin: '10px 0' }}
                 value={tags}
@@ -63,7 +70,7 @@ const Home = () => {
                 label="Search Tags"
                 variant="outlined"
               />
-              <Button style={{ borderRadius: 25 }} onClick={searchPost} className={classes.searchButton} variant="contained" color="secondary">Search</Button>
+            <Button style={{ borderRadius: 25 }} onClick={searchPost} className={classes.searchButton} variant="contained" color="secondary">Search</Button>
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
             {(!searchQuery && !tags.length) && (

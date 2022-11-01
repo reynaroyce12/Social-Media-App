@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import { Typography, CircularProgress, Grid, Divider } from '@material-ui/core';
+import { Typography, CircularProgress, Grid, Divider, Avatar } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Post from '../Posts/Post/Post';
@@ -10,7 +10,6 @@ const CreatorOrTag = () => {
   const { name } = useParams();
   const dispatch = useDispatch();
   const { posts, isLoading } = useSelector((state) => state.posts);
-
   const location = useLocation();
 
   useEffect(() => {

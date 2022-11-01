@@ -25,6 +25,7 @@ const Navbar = (props) => {
     dispatch({ type: actionType.LOGOUT });
     history.push('/auth');
     setUser(null);
+    localStorage.removeItem('profile');
   };
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const Navbar = (props) => {
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
           <div className={classes.profile}>
-            <DarkMode />
+            {/* <DarkMode /> */}
             <Avatar className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
             <Typography className={classes.userName} variant="h6">{user?.result.name}</Typography>
             <Button style={{ border: '2px solid #0F3057', borderRadius: 25 }} variant="contained" className={classes.logout} onClick={logout}>Logout</Button>

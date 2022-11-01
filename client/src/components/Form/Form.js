@@ -56,7 +56,6 @@ const Form = ({ currentId, setCurrentId }) => {
     setPostData({ ...postData, tags: postData.tags.filter((tag) => tag !== chipToDelete) });
   };
 
-  // style={{ border: '2px solid black', borderRadius: 15 }}
   return (
     <Paper style={{ borderRadius: 15 }} className={classes.paper} elevation={6}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>

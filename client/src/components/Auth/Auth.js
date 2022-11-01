@@ -49,7 +49,6 @@ const SignUp = () => {
 
     try {
       dispatch({ type: AUTH, data: { result, token } });
-
       history.push('/');
     } catch (error) {
       console.log(error);
@@ -58,6 +57,7 @@ const SignUp = () => {
   };
  
   const googleError = () => console.log('Google Sign In was unsuccessful. Try again later');
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -101,7 +101,7 @@ const SignUp = () => {
           />
           <Grid container justify="flex-end">
             <Grid item>
-              <Button style={{marginRight: '50px'}}onClick={switchMode}>
+              <Button style={{marginRight: '50px'}} onClick={switchMode}>
                 { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }
               </Button>
             </Grid>

@@ -15,7 +15,6 @@ const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
 
   return (
-    // <GoogleOAuthProvider clientId={id}>
     <BrowserRouter>
       <Container maxWidth="xl">
         <Navbar />
@@ -29,7 +28,6 @@ const App = () => {
         </Switch>
       </Container>
     </BrowserRouter>
-    // </GoogleOAuthProvider>
   );
 };
 

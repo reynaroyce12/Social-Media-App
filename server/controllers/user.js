@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 import UserModal from "../models/user.js";
 
 const secret = 'test';
-//const api_key = 'https://api.emailable.com/v1/verify?email=reynaroyce.12@gmail.com&test_126450c1e106217db396=test_126450c1e106217db396'
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;

@@ -4,11 +4,9 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import decode from 'jwt-decode';
 
-// import memoriesLogo from '../../images/memoriesLogo.png';
 import logoText from '../../images/logoText.png';
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';
-import DarkMode from '../darkMode/darkMode';
 
 
 const Navbar = (props) => {
@@ -42,13 +40,11 @@ const Navbar = (props) => {
     <AppBar className={classes.appBar} position="static" color="inherit">
       <Link to="/" className={classes.brandContainer}>
         <img component={Link} to="/" src={logoText} alt="icon" height="55px" />
-        {/* <img className={classes.image} src={memoriesLogo} alt="icon" height="40px" /> */}
       </Link>
 
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
           <div className={classes.profile}>
-            {/* <DarkMode /> */}
             <Avatar className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
             <Typography className={classes.userName} variant="h6">{user?.result.name}</Typography>
             <Button style={{ border: '2px solid #0F3057', borderRadius: 25 }} variant="contained" className={classes.logout} onClick={logout}>Logout</Button>

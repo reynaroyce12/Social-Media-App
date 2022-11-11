@@ -29,7 +29,6 @@ const Home = () => {
 
   const searchPost = () => {
     if ((search.trim() || tags) && !userAccount) {
-      // console.log(userAccount)
       dispatch(getPostsBySearch({ search, tags: tags.join(','),  }));
       history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
     } else if (userAccount) {

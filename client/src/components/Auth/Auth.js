@@ -3,9 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
-// import { GoogleLogin } from '@react-oauth/google'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-// import jwtDecode from "jwt-decode";
+
 
 import Icon from './icon';
 import { signin, signup } from '../../actions/auth';
@@ -41,7 +40,9 @@ const SignUp = () => {
     }
   };
   
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;

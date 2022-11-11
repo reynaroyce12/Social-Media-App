@@ -10,6 +10,7 @@ import useStyles from './styles';
 
 const Post = () => {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
+  const user = JSON.parse(localStorage.getItem('profile'));
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
@@ -58,11 +59,19 @@ const Post = () => {
             </Link>
           </Typography>
           <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
-          <Divider style={{ margin: '20px 0' }} />
-          {/* <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography> */}
-          <Divider style={{ margin: '20px 0' }} />
-          <CommentSection post={post} />
-          <Divider style={{ margin: '20px 0' }} />
+
+          {user ? <Divider style={{ margin: '20px 0' }} /> : null}
+          {user ? <Divider style={{ margin: '20px 0' }} /> : null}
+          {user ? <CommentSection post={post} /> : null}
+
+        <Divider style={{ margin: '20px 0' }} />
+
+          {!user ? <Paper style={{ border: '2px solid black', borderRadius: 15 }} className={classes.paper} elevation={6}>
+        <Typography variant="h6" align="center">
+          Sign In to post comments.
+        </Typography>
+        </Paper> : null}
+
         </div>
         <div className={classes.imageSection}>
           <img className={classes.media} src={post.selectedFile} alt={post.title} />

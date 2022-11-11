@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Container } from '@material-ui/core';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-// import { GoogleOAuthProvider } from '@react-oauth/google'
 
 import PostDetails from './components/PostDetails/PostDetails';
 import Navbar from './components/Navbar/Navbar';
@@ -11,7 +10,6 @@ import CreatorOrTag from './components/CreatorOrTag/CreatorOrTag';
 
 
 const App = () => {
-  // const id = '225491722753-s8d2ufqkqeq7k8u1bj02ikcu6ktrsc4c.apps.googleusercontent.com'
   const user = JSON.parse(localStorage.getItem('profile'));
 
   return (

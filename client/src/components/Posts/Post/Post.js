@@ -14,6 +14,12 @@ import useStyles from './styles';
 const Post = ({ post, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem('profile'));
   const [likes, setLikes] = useState(post?.likes);
+  
+  const [expanded, setExpanded] = useState(false)
+  const handleExpandClick = (e) => {
+    setExpanded(!expanded)
+  }
+
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
@@ -45,13 +51,11 @@ const Post = ({ post, setCurrentId }) => {
   };
 
   const openPost = (e) => {
-    // dispatch(getPost(post._id, history));
-
     history.push(`/posts/${post._id}`);
   };
 
   return (
-    <Card className={classes.card} raised elevation={6}>
+    <Card className={classes.card} raised elevation={9}>
       <ButtonBase
         component="span"
         name="test"
@@ -95,6 +99,9 @@ const Post = ({ post, setCurrentId }) => {
           </Button>
         )}
       </CardActions>
+
+
+
     </Card>
   );
 };
